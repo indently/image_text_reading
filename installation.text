@@ -1,0 +1,8 @@
+Mac: (*Requires home-brew)
+1) brew install tesseract
+2) brew install tesseract-lang (to install with all languages)
+
+Windows:
+1) Install: https://github.com/UB-Mannheim/tesseract/wiki
+2) Save path and create variable to path:
+windows_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe" (This might be different on your computer)
