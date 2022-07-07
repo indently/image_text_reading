@@ -23,22 +23,21 @@ class ImageReader:
 
         if os == OS.Windows:
             # This should be replaced with your own path to: tesseract.exe
-            windows_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+            windows_path = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
             pytesseract.tesseract_cmd = windows_path
             print('Running on: WINDOWS\n')
 
     # Specify the image and language for the text you want to extract
-    def extract_text(self, image: str, lang: str) -> str:
+    def extract_text(self, image: str, lang: Language) -> str:
         img = Image.open(image)
-        img.load()
-        extracted_text = pytesseract.image_to_string(img, lang=lang)
+        extracted_text = pytesseract.image_to_string(img, lang=lang.value)
         return extracted_text
 
 
 if __name__ == '__main__':
     ir = ImageReader(OS.Mac)
     # Multiple languages can be used with: 'eng+ita+rus'
-    text = ir.extract_text(image='images/russian.png', lang='rus+eng')
+    text = ir.extract_text(image='images/kings.png', lang=Language.ENG)
 
     # Do some light processing before printing the text
     processed_text = ' '.join(text.split())
